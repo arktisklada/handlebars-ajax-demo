@@ -11,5 +11,10 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require jquery_ujs
-//= require_tree .
+//= require underscore
+//= require handlebars
+//= require home
+
+// for the advanced exercise
+// require home-advanced
+// require home-advanced-dryajax

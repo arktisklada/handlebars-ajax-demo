@@ -1,6 +1,5 @@
 var pointer = 0;
 
-
 // This function handles the "Populate" button and scrolling, sending a step value (limit) and pointer (offset) through an ajax function
 function populateCountries() {
   // the controller should return json: false if the result set is 0, indicating we have reached the end of the list
@@ -24,6 +23,23 @@ function populateCountries() {
           _.each(data, function(country) {
             // append the rendered template to the content div
             $('#content').append(template(country));
+
+
+            // THE ADVANCED EXERCISE /////////////////////
+            // When a user clicks on a country row, make another ajax call to retrieve that country's created_at date
+            // And display an alert with the country id and created_at date
+            $('#content').children().last().click(function() {
+              $.ajax({
+                url: '/country/' + country.id,
+                type: 'GET',
+                success: function(data) {
+                  alert("Country id id " + data.id + " and added on: " + data.created_at);
+                }
+              });
+            });
+            //////////////////////////////////////////////
+
+
           });
           // update the pointer to include our recent data set
           pointer += data.length;

@@ -1,14 +1,8 @@
 class HomeController < ApplicationController
 
-  def index
-
-  end
-
   def countries
-    puts params
     step = params[:step] || 5
     offset = params[:offset] || 0
-    puts offset
 
     countries = Country.select([:id, :abbreviation, :name, :north_america]).limit(step).offset(offset);
     
@@ -19,9 +13,10 @@ class HomeController < ApplicationController
     end
   end
 
+  # for the advanced exercise
   def country
     id = params[:id]
-    country = Country.find_by_id(id);
+    country = Country.find(id);
     render :json => country
   end
 
